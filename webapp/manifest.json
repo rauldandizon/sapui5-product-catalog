@@ -1,0 +1,78 @@
+{
+  "_version": "1.40.0",
+  "sap.app": {
+    "id": "my.products",
+    "type": "application",
+    "title": "{{appTitle}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "mainService":{
+        "uri": "/odata/V2/Northwind/Northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "my.products.view.App",
+      "type": "XML",
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewPath": "my.products.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "viewType": "XML",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "list",
+          "target": "list"
+        },
+        {
+          "pattern": "product/{id}",
+          "name": "detail",
+          "target": "detail"
+        }
+      ],
+      "targets": {
+        "list": {
+          "viewName": "List",
+          "viewId": "list"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "viewId": "detail"
+        }
+      }
+    },
+    "models": {
+      "": {
+      "dataSource": "mainService",
+      "preload": true
+    },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "my.products.i18n.i18n"
+        }
+      }
+    }
+  }
+}

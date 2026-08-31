@@ -1,0 +1,22 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <Dialog
+        id="productDialog"
+        title="{i18n>stockDetails}"
+    >
+        <content>
+            <Text
+                text="{ProductName} has {UnitsInStock} units in stock."
+                class="sapUiSmallMargin"
+            />
+        </content>
+        <beginButton>
+            <Button
+                text="{i18n>close}"
+                press=".onCloseDialog"
+            />
+            </beginButton>
+    </Dialog>
+</c:FragmentDefinition>

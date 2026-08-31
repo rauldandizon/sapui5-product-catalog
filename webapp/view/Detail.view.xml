@@ -1,0 +1,22 @@
+<mvc:View
+    controllerName="my.products.controller.Detail"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page title="{ProductName}" showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <ObjectHeader title="{ProductName}" number="{UnitPrice}" numberUnit="PHP">
+                <attributes>
+                    <ObjectAttribute title="{i18n>category}" text="{Category/CategoryName}" />
+                    <ObjectAttribute title="{i18n>stock}" text="{UnitsInStock}" />
+                </attributes>
+            </ObjectHeader>
+        </content>
+        <footer>
+            <Bar>
+                <contentRight>
+                    <Button text="{i18n>stockDetails}" type="Emphasized" press=".onOpenDialog" />
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

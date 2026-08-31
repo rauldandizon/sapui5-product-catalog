@@ -1,0 +1,33 @@
+<mvc:View
+    controllerName="my.products.controller.List"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page title="{/shopName}">
+        <subHeader>
+            <Bar>
+                <contentMiddle>
+                    <SearchField width="100%" search=".onSearch" placeholder="{i18n>searchPlaceholder}"/>
+                </contentMiddle>
+            </Bar>
+        </subHeader>
+        <content>
+            <!-- items: ABSOLUTE path = aggregation binding. Clones StandardListItem once per
+                 array entry and gives each clone its own binding context (row 0, row 1, ...). -->
+            <List
+                id="productList"
+                items="{path: '/Products', parameters: {expand: 'Category'}}"
+                noDataText="{i18n>noData}">
+
+                <!-- title/description/info: RELATIVE paths — resolved per-row against that
+                     clone's own context, NOT the model root. {/Name} here would render blank
+                     for every row, with no console error (see Stage 5 trap). -->
+                <StandardListItem
+                    title="{ProductName}"
+                    description="{QuantityPerUnit}"
+                    info="{UnitPrice}"
+                    type="Navigation"
+                    press=".onItemPress" />
+            </List>
+        </content>
+    </Page>
+</mvc:View>

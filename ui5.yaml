@@ -1,0 +1,12 @@
+specVersion: "3.0"
+metadata:
+  name: my.products
+type: application
+server:
+  # Proxies /odata/* to Northwind server-side so browser CORS never applies (see README).
+  customMiddleware:
+    - name: ui5-middleware-simpleproxy
+      afterMiddleware: compression
+      mountPath: /odata
+      configuration:
+        baseUri: "https://services.odata.org"
